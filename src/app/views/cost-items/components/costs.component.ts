@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { CostsService } from '../services';
 
 @Component({
-    selector: 'cost-items',
-    templateUrl: 'cost-items.component.html',
+    selector: 'costs',
+    templateUrl: 'costs.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CostItemsComponent {
-    costs$ = this.costsService.getItems();
+export class CostsComponent {
+    costs$ = this.costsService.getCosts();
 
     constructor(private readonly costsService: CostsService) {}
 }

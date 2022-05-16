@@ -1,1 +1,1 @@
-export * from './cost-items.component';
+export * from './costs.component';

@@ -1,1 +1,1 @@
-export * from './cost-items.module';
+export * from './costs.module';

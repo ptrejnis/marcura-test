@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+
 import { RootRoutes } from '@shared/routes';
 
 const routes: Routes = [
@@ -11,9 +12,7 @@ const routes: Routes = [
     {
         path: RootRoutes.CostItems,
         loadChildren: () =>
-            import('./views/cost-items/cost-items.module').then(
-                (m) => m.CostItemsModule,
-            ),
+            import('@views/cost-items/costs.module').then((m) => m.CostsModule),
     },
 ];
 
