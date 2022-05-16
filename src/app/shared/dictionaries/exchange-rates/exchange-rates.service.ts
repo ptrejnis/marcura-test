@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { MOCKS_URL } from '@utils/consts/mocks';
 import { ExchangeRates } from './types';
-
-const MOCKS_URL = '../../../../assets/mocks';
 
 @Injectable({ providedIn: 'root' })
 export class ExchangeRatesService {
