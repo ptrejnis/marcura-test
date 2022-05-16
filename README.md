@@ -11,11 +11,15 @@ Simple web application is a part of recruitment process to `Macrura Equities FZE
 
 ### Install dependencies
 ```shell
+npm install
+# or
 yarn install
 ```
 
 ### Run project
 ```shell 
+npm start
+# or
 yarn start
 # or
 ng serve
