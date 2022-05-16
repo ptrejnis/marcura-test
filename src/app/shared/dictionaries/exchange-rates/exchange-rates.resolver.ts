@@ -10,6 +10,6 @@ export class ExchangeRatesResolver implements Resolve<ExchangeRates> {
     constructor(private readonly _exchangeRatesService: ExchangeRatesService) {}
 
     resolve(): Observable<ExchangeRates> {
-        return this._exchangeRatesService.getExchangeRates();
+        return this._exchangeRatesService.getCachedOrMakeRequest();
     }
 }

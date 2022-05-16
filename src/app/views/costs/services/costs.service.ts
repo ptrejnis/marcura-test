@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { MOCKS_URL } from '@utils/consts/mocks';
+import { MOCKS_URL } from '@utils/consts';
 import { CostsResponse } from '../types';
 
 @Injectable({ providedIn: 'root' })

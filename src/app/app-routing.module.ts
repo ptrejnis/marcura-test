@@ -6,11 +6,11 @@ import { RootRoutes } from '@shared/routes';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: RootRoutes.CostItems,
+        redirectTo: RootRoutes.Costs,
         pathMatch: 'full',
     },
     {
-        path: RootRoutes.CostItems,
+        path: RootRoutes.Costs,
         loadChildren: () =>
             import('@views/costs/costs.module').then((m) => m.CostsModule),
     },
