@@ -12,7 +12,7 @@ const routes: Routes = [
     {
         path: RootRoutes.CostItems,
         loadChildren: () =>
-            import('@views/cost-items/costs.module').then((m) => m.CostsModule),
+            import('@views/costs/costs.module').then((m) => m.CostsModule),
     },
 ];
 

@@ -1,14 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { CostsService } from '../services';
+import { CostsFacade } from '../facades';
 
 @Component({
     selector: 'costs',
     templateUrl: 'costs.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [CostsFacade],
 })
 export class CostsComponent {
-    costs$ = this.costsService.getCosts();
-
-    constructor(private readonly costsService: CostsService) {}
+    constructor(readonly costsFacade: CostsFacade) {}
 }
