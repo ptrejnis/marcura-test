@@ -7,8 +7,12 @@ import { CostsResponse } from '../types';
 
 @Injectable()
 export class CostsFacade {
-    readonly costs$: Observable<CostsResponse> = this._route.data.pipe(pluck('costs'));
-    readonly exchangeRates$: Observable<ExchangeRates> = this._route.data.pipe(pluck('exchangeRates'));
+    readonly costs$: Observable<CostsResponse> = this._route.data.pipe(
+        pluck('costs'),
+    );
+    readonly exchangeRates$: Observable<ExchangeRates> = this._route.data.pipe(
+        pluck('exchangeRates'),
+    );
 
     constructor(private readonly _route: ActivatedRoute) {}
 }
