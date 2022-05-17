@@ -1,7 +1,6 @@
+<ng-container *ngIf="costs$ | async as costs">
+    <exchange-rates [baseCurrency]="costs.baseCurrency.currency"></exchange-rates>
+</ng-container>
 <div>COST ITEMS COMPONENT</div>
 <br/>
-<div>COSTS: {{ costsFacade.costs$ | async | json }}</div>
-<br/>
-<div>EXCHANGE RATES: {{ costsFacade.exchangeRates$ | async | json }}</div>
-<br />
-<exchange-rates></exchange-rates>
+<div>COSTS: {{ costs$ | async | json }}</div>

@@ -1,5 +1,5 @@
 import { Note } from '@shared/notes';
-import { CostItem } from './cost-item';
+import { Cost } from '@shared/types';
 
 export interface ExpenseCategory {
     id: number;
@@ -7,4 +7,21 @@ export interface ExpenseCategory {
     displayOrder: number;
     costItems: CostItem[];
     comments: Note[];
+}
+
+export interface CostItem {
+    id: number;
+    name: string;
+    costItemAlias: CostItemAlias;
+    annotation: CostAnnotation;
+    costs: Cost[];
+}
+
+interface CostItemAlias {
+    accountingCode: string;
+}
+
+interface CostAnnotation {
+    id: number;
+    name: string;
 }

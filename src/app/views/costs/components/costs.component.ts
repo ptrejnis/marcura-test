@@ -9,5 +9,8 @@ import { CostsFacade } from '../facades';
     providers: [CostsFacade],
 })
 export class CostsComponent {
-    constructor(readonly costsFacade: CostsFacade) {}
+    costs$ = this._costsFacade.costs$;
+    exchangeRates$ = this._costsFacade.exchangeRates$;
+
+    constructor(private readonly _costsFacade: CostsFacade) {}
 }

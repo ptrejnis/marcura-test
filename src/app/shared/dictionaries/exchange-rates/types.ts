@@ -1,12 +1,12 @@
-export type SourceCurrency = 'SGD';
-
 export interface ExchangeRates {
-    sourceCurrency: SourceCurrency;
-    paymentsCurrencies: PaymentCurrency[];
+    sourceCurrency: string;
+    paymentCurrencies: PaymentCurrency[];
 }
 
-interface PaymentCurrency {
-    fromCurrency: SourceCurrency;
+export interface PaymentCurrency {
+    fromCurrency: string;
     toCurrency: string;
     exchangeRate: number;
 }
+
+

@@ -1,9 +1,7 @@
 import { Observable, shareReplay } from 'rxjs';
 
-import { Maybe } from '@utils/types';
-
 export abstract class ResponseCache<T> {
-    private _source$: Maybe<Observable<T>>;
+    private _source$: Observable<T>;
 
     getCachedOrMakeRequest(...args: unknown[]): Observable<T> {
         if (!this._source$) {

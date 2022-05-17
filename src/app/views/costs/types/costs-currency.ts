@@ -1,4 +1,4 @@
 export interface CostsCurrency {
-    currency: 'SGD' | 'USD';
+    currency: string;
     exchangeRate: number;
 }
