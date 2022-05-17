@@ -1,4 +1,4 @@
 export interface CostsCurrency {
-    currency: string;
-    exchangeRate: number;
+  currency: string;
+  exchangeRate: number;
 }

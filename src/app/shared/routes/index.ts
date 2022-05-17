@@ -1,3 +1,3 @@
 export enum RootRoutes {
-    Costs = 'costs',
+  Costs = 'costs'
 }

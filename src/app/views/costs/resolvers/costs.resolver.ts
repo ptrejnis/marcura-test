@@ -7,9 +7,9 @@ import { CostsService } from '../services';
 
 @Injectable({ providedIn: 'root' })
 export class CostsResolver implements Resolve<CostsResponse> {
-    constructor(private readonly _costsService: CostsService) {}
+  constructor(private readonly _costsService: CostsService) {}
 
-    resolve(): Observable<CostsResponse> {
-        return this._costsService.getCosts();
-    }
+  resolve(): Observable<CostsResponse> {
+    return this._costsService.getCosts();
+  }
 }

@@ -4,19 +4,14 @@
         <label class="block text-sm font-medium text-gray-700">Currency</label>
         <select
             formControlName="currency"
-            class="mt-1 block w-52 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        >
-            <ng-container
-                *ngFor="let currency of exchangeRates.paymentCurrencies"
-            >
+            class="mt-1 block w-52 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <ng-container *ngFor="let currency of exchangeRates.paymentCurrencies">
                 <option [ngValue]="currency">{{ currency.toCurrency }}</option>
             </ng-container>
         </select>
         <p *ngIf="baseCurrency$ | async as currency">
-            1 {{ currency.fromCurrency }} =
-            {{ currency | exchange:exchangeRates }}
+            {{ currency.amount }} {{ currency.fromCurrency }} =
+            {{ currency.amount | exchangeConverter: currency:exchangeRates | toFixed: 4 }} {{ currency.toCurrency }}
         </p>
     </form>
 </ng-container>
-
-{{ selectedCurrency | json }}

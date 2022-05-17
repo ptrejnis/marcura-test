@@ -7,9 +7,9 @@ import { CostsResponse } from '../types';
 
 @Injectable({ providedIn: 'root' })
 export class CostsService {
-    constructor(private readonly _httpClient: HttpClient) {}
+  constructor(private readonly _httpClient: HttpClient) {}
 
-    getCosts(): Observable<CostsResponse> {
-        return this._httpClient.get<CostsResponse>(`${MOCKS_URL}/costs.json`);
-    }
+  getCosts(): Observable<CostsResponse> {
+    return this._httpClient.get<CostsResponse>(`${MOCKS_URL}/costs.json`);
+  }
 }

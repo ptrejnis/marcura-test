@@ -1,3 +1,3 @@
 export enum Persona {
-    Backoffice = 'BACKOFFICE',
+  Backoffice = 'BACKOFFICE'
 }
