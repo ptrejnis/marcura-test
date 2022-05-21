@@ -1,9 +1,7 @@
-import { DaStage, Persona } from '@shared/types';
-
 export interface Note {
   id: number;
-  daStage: DaStage;
-  persona: Persona;
+  daStage: string;
+  persona: string;
   author: string;
   comment: string;
   type: NoteType;

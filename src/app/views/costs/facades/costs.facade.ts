@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, combineLatest, filter, Observable, pluck, take, tap } from 'rxjs';
+import { combineLatest, filter, Observable, pluck, take, tap } from 'rxjs';
 
-import { CurrencyExchange, CurrencyExchangeRates, ExchangeRates } from '@shared/exchange-rates';
+import { CurrencyExchangeRates, ExchangeRates } from '@shared/exchange-rates';
 import { CostsResponse } from '../types';
 import { ExchangeRatesFacade } from '@shared/exchange-rates/facades';
-import { updateBehaviorSubject } from '@utils/helpers';
 import { notEmptyArray } from '@utils/types';
 
 @Injectable()

@@ -18,5 +18,5 @@ export interface CurrencyExchange {
 export interface CurrencyExchangeRates {
   from: number;
   to: number;
-  currency: string
+  currency: string;
 }

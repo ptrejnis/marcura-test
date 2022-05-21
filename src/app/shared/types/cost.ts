@@ -1,10 +1,8 @@
-import { Persona } from '@shared/types/persona';
-import { DaStage } from './da-stage';
 import { CostType } from '@shared/cost-type';
 
 export interface Cost {
-  daStage: DaStage;
-  persona: Persona;
+  daStage: string;
+  persona: string;
   type: CostType;
   amount: number;
 }

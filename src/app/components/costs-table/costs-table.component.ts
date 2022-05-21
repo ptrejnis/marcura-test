@@ -14,7 +14,7 @@ export class CostsTableComponent {
   daToBaseExchangeCurrency$ = this._exchangeRatesFacade.daToBaseExchangeCurrency$;
 
   get allCosts() {
-    return this.expenseCategory.costItems.flatMap(i => i?.costs);
+    return this.expenseCategory.costItems.flatMap((i) => i?.costs);
   }
 
   constructor(private readonly _exchangeRatesFacade: ExchangeRatesFacade) {}

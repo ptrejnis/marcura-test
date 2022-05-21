@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 const DECIMAL_SEPARATOR = '.';
 const INTEGER_SEPARATOR = ',';
-const REGEXP: RegExp = new RegExp(/\B(?=(\d{3})+(?!\d))/g);
+const REGEXP = new RegExp(/\B(?=(\d{3})+(?!\d))/g);
 
 @Pipe({ name: 'amount' })
 export class AmountPipe implements PipeTransform {

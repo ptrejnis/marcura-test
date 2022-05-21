@@ -1,8 +1,8 @@
-import {Pipe, PipeTransform} from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'fixedNumber' })
 export class FixedIntegerPipe implements PipeTransform {
-    transform(value: number, digits: number): string {
-        return value.toFixed(digits);
-    }
+  transform(value: number, digits: number): string {
+    return value.toFixed(digits);
+  }
 }
