@@ -1,17 +1,18 @@
-<ng-container *ngIf="exchangeRates$ | async as exchangeRates">
-    {{ baseCurrency }}
-    <form [formGroup]="form" class="flex items-center">
-        <label class="block text-sm font-medium text-gray-700">Currency</label>
-        <select
-            formControlName="currency"
-            class="mt-1 block w-52 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            <ng-container *ngFor="let currency of exchangeRates.paymentCurrencies">
-                <option [ngValue]="currency">{{ currency.toCurrency }}</option>
-            </ng-container>
-        </select>
-        <p *ngIf="baseCurrency$ | async as currency">
-            {{ currency.amount }} {{ currency.fromCurrency }} =
-            {{ currency.amount | exchangeConverter: currency:exchangeRates | toFixed: 4 }} {{ currency.toCurrency }}
-        </p>
-    </form>
-</ng-container>
+<form [formGroup]="form" class="flex items-center">
+  <label class="block text-sm font-medium text-gray-700 pr-3">Currency</label>
+  <select
+    formControlName="currency"
+    class="mt-1 block w-52 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    <ng-container *ngIf="exchangeRates$ | async as exchangeRates">
+      <option *ngFor="let currency of exchangeRates.paymentCurrencies" [ngValue]="currency">
+        {{ currency.toCurrency }}
+      </option>
+    </ng-container>
+  </select>
+  <p class="pl-3" *ngIf="baseToSelectedExchangeRates$ | async as exchangeRates">
+    {{ baseCurrencyAmount }} {{ (baseCurrencyExchangeRates$ | async)?.currency }} =
+    <span class="font-semibold">
+      {{ baseCurrencyAmount | exchange: exchangeRates | fixedNumber: 4 }} {{ exchangeRates.currency }}
+    </span>
+  </p>
+</form>

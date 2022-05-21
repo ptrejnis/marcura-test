@@ -2,9 +2,9 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, distinctUntilChanged, map, Observable, Subject, take, takeUntil, tap } from 'rxjs';
 
-import { isNonNullable } from '@utils/types';
+import { notEmptyObject } from '@utils/types';
 import { updateBehaviorSubject } from '@utils/helpers';
-import { CurrencyConverter, ExchangeRates, PaymentCurrency } from '../types';
+import { CurrencyExchange, ExchangeRates, PaymentCurrency } from '../types';
 
 @Injectable()
 export class ExchangeRatesFormFacade implements OnDestroy {
@@ -33,22 +33,17 @@ export class ExchangeRatesFormFacade implements OnDestroy {
         map(({ paymentCurrencies, sourceCurrency }) =>
           paymentCurrencies.find(({ toCurrency }) => toCurrency === sourceCurrency)
         ),
-        tap((v) => isNonNullable<PaymentCurrency>(v) && this.currencyControl.setValue(v))
+        tap((v) => notEmptyObject(v) && this.currencyControl.setValue(v))
       )
       .subscribe();
   }
 
-  onCurrencyChange(currencyRate$: BehaviorSubject<CurrencyConverter>): void {
+  onCurrencyChange(cb: (currency: PaymentCurrency) => void): void {
     this.currency$
       .pipe(
         takeUntil(this._destroyed$),
         distinctUntilChanged((prev, next) => prev.toCurrency !== prev.toCurrency),
-        tap(({ toCurrency, exchangeRate }) =>
-          updateBehaviorSubject(currencyRate$, {
-            toCurrency,
-            exchangeRate
-          })
-        )
+        tap(cb)
       )
       .subscribe();
   }

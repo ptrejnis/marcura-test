@@ -23,6 +23,7 @@
         "paths": {
             "@shared/*": ["src/app/shared/*"],
             "@views/*": ["src/app/views/*"],
+            "@components/*": ["src/app/components/*"],
             "@utils/*": ["src/app/utils/*"]
         }
     },

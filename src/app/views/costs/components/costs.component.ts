@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { CostsFacade } from '../facades';
 
@@ -8,9 +8,12 @@ import { CostsFacade } from '../facades';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CostsFacade]
 })
-export class CostsComponent {
+export class CostsComponent implements OnInit {
   costs$ = this._costsFacade.costs$;
-  exchangeRates$ = this._costsFacade.exchangeRates$;
 
   constructor(private readonly _costsFacade: CostsFacade) {}
+
+  ngOnInit() {
+    this._costsFacade.updateCostsCurrencies();
+  }
 }

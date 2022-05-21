@@ -1,3 +1,3 @@
 export * from './maybe';
-export * from './is-not-nullable';
+export * from './non-nullable';
 export * from './is-array';

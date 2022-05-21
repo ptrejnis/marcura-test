@@ -1,1 +1,1 @@
-export * from './exchange-converter.pipe';
+export * from './exchange.pipe';

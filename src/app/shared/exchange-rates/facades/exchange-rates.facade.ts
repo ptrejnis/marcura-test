@@ -1,20 +1,55 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
 
-import { CurrencyConverter } from '../types';
-import { EXCHANGE_RATES_CONFIG, ExchangeRatesConfig } from '@shared/exchange-rates/providers';
+import { CurrencyExchangeRates, ExchangeRates } from '../types';
 
 @Injectable({ providedIn: 'root' })
 export class ExchangeRatesFacade {
-  readonly baseCurrency$: BehaviorSubject<CurrencyConverter> = new BehaviorSubject(
-    this._config.initialCurrencyConverter
+  readonly exchangeRates$: BehaviorSubject<ExchangeRates> = new BehaviorSubject({} as ExchangeRates);
+  readonly baseCurrencyExchangeRates$: BehaviorSubject<CurrencyExchangeRates> = new BehaviorSubject(
+    {} as CurrencyExchangeRates
   );
-  readonly daCurrency$: BehaviorSubject<CurrencyConverter> = new BehaviorSubject(this._config.initialCurrencyConverter);
+  readonly daCurrencyExchangeRates$: BehaviorSubject<CurrencyExchangeRates> = new BehaviorSubject(
+    {} as CurrencyExchangeRates
+  );
+  readonly selectedCurrency$ = new BehaviorSubject<CurrencyExchangeRates>({} as CurrencyExchangeRates);
+  readonly baseToSelectedExchangeRates$: Observable<CurrencyExchangeRates> = combineLatest([
+    this.baseCurrencyExchangeRates$.asObservable(),
+    this.selectedCurrency$.asObservable()
+  ]).pipe(
+    map(([base, selected]) => {
+      return {
+        from: base.from,
+        to: selected.to,
+        currency: selected.currency
+      };
+    })
+  );
+  readonly daToBaseExchangeCurrency$: Observable<CurrencyExchangeRates> = combineLatest([
+    this.daCurrencyExchangeRates$.asObservable(),
+    this.baseCurrencyExchangeRates$.asObservable()
+  ]).pipe(
+    map(([da, base]) => {
+      return {
+        from: da.from,
+        to: base.to,
+        currency: base.currency
+      };
+    })
+  );
+  readonly daToSelectedExchangeCurrency$: Observable<CurrencyExchangeRates> = combineLatest([
+    this.daCurrencyExchangeRates$.asObservable(),
+    this.selectedCurrency$.asObservable()
+  ]).pipe(
+    map(([da, selected]) => {
+      return {
+        from: da.from,
+        to: selected.to,
+        currency: selected.currency
+      };
+    })
+  );
 
-  constructor(
-    @Inject(EXCHANGE_RATES_CONFIG)
-    private readonly _config: ExchangeRatesConfig,
-    private readonly _route: ActivatedRoute
-  ) {}
+  constructor(private readonly _route: ActivatedRoute) {}
 }

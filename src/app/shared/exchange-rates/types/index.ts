@@ -9,6 +9,14 @@ export interface PaymentCurrency {
   exchangeRate: number;
 }
 
-export interface CurrencyConverter extends PaymentCurrency {
-  amount: number;
+export interface CurrencyExchange {
+  baseCurrency: string;
+  daCurrency: string;
+  selectedCurrency: string;
+}
+
+export interface CurrencyExchangeRates {
+  from: number;
+  to: number;
+  currency: string
 }

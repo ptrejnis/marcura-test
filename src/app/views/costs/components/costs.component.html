@@ -1,6 +1,9 @@
-<ng-container *ngIf="costs$ | async as costs">
-    <exchange-rates [baseCurrency]="costs.baseCurrency.currency"></exchange-rates>
-</ng-container>
-<div>COST ITEMS COMPONENT</div>
-<br/>
-<div>COSTS: {{ costs$ | async | json }}</div>
+<div class="container mx-auto" *ngIf="costs$ | async as costs">
+    <div class="flex justify-between items-center">
+        <h1 class="font-semibold text-c-header-primary text-md uppercase">Costs</h1>
+        <exchange-rates></exchange-rates>
+    </div>
+    <ng-container *ngFor="let expenseCategory of costs.costs">
+        <costs-table [expenseCategory]="expenseCategory"></costs-table>
+    </ng-container>
+</div>
