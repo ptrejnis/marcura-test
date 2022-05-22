@@ -4,5 +4,5 @@ import { Directive, TemplateRef } from '@angular/core';
   selector: '[lazyContent]'
 })
 export class LazyContentDirective {
-  constructor(readonly content: TemplateRef<unknown>) {}
+  constructor(public readonly content: TemplateRef<unknown>) {}
 }

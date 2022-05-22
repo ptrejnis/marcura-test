@@ -90,3 +90,8 @@
     </div>
   </div>
 </div>
+
+<button [expansionPanel]="expand">expand</button>
+<expansion-panel #expand>
+  <ng-container *lazyContent>WITAM</ng-container>
+</expansion-panel>
