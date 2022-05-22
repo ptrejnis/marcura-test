@@ -23,12 +23,14 @@
                   <div class="flex flex-col">
                     <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
                       <span>
-                        {{ currency.currency }} {{ item.costs | costType: 'Quoted' | exchange: currency | fixedNumber: 2 | amount }}
+                        {{ currency.currency }}
+                        {{ item.costs | costType: 'Quoted' | exchange: currency | fixedNumber: 2 | amount }}
                       </span>
                     </ng-container>
                     <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
                       <span>
-                        {{ currency.currency }} {{ item.costs | costType: 'Quoted' | exchange: currency | fixedNumber: 2 | amount }}
+                        {{ currency.currency }}
+                        {{ item.costs | costType: 'Quoted' | exchange: currency | fixedNumber: 2 | amount }}
                       </span>
                     </ng-container>
                   </div>
@@ -37,19 +39,35 @@
                   <div class="flex flex-col">
                     <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
                       <span>
-                        {{ currency.currency }} {{ item.costs | costType: 'Screened' | exchange: currency | fixedNumber: 2 | amount }}
+                        {{ currency.currency }}
+                        {{ item.costs | costType: 'Screened' | exchange: currency | fixedNumber: 2 | amount }}
                       </span>
                     </ng-container>
 
                     <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
                       <span>
-                        {{ currency.currency }} {{ item.costs | costType: 'Screened' | exchange: currency | fixedNumber: 2 | amount }}
+                        {{ currency.currency }}
+                        {{ item.costs | costType: 'Screened' | exchange: currency | fixedNumber: 2 | amount }}
                       </span>
                     </ng-container>
                   </div>
                 </td>
-              </tr></ng-container
-            >
+                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs flex w-100">
+                  <button class="justify-self-end" [expansionPanel]="expand">
+                    expand: {{ item.comments?.length ?? 0 }}
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5">
+                  <expansion-panel #expand>
+                    <ng-container *lazyContent>
+                      <notes [notes]="item.comments"></notes>
+                    </ng-container>
+                  </expansion-panel>
+                </td>
+              </tr>
+            </ng-container>
 
             <tr class="bg-white border-b">
               <td class="font-semibold text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">Total</td>
@@ -58,12 +76,14 @@
                 <div class="flex flex-col">
                   <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
                     <span>
-                      {{ currency.currency }} {{ allCosts | costType: 'Quoted':'sum' | exchange: currency | fixedNumber: 2 | amount }}
+                      {{ currency.currency }}
+                      {{ allCosts | costType: 'Quoted':'sum' | exchange: currency | fixedNumber: 2 | amount }}
                     </span>
                   </ng-container>
                   <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
                     <span>
-                      {{ currency.currency }} {{ allCosts | costType: 'Quoted':'sum' | exchange: currency | fixedNumber: 2 | amount }}
+                      {{ currency.currency }}
+                      {{ allCosts | costType: 'Quoted':'sum' | exchange: currency | fixedNumber: 2 | amount }}
                     </span>
                   </ng-container>
                 </div>
@@ -72,13 +92,15 @@
                 <div class="flex flex-col">
                   <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
                     <span>
-                      {{ currency.currency }} {{ allCosts | costType: 'Screened':'sum' | exchange: currency | fixedNumber: 2 | amount }}
+                      {{ currency.currency }}
+                      {{ allCosts | costType: 'Screened':'sum' | exchange: currency | fixedNumber: 2 | amount }}
                     </span>
                   </ng-container>
 
                   <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
                     <span>
-                      {{ currency.currency }} {{ allCosts | costType: 'Screened':'sum' | exchange: currency | fixedNumber: 2 | amount }}
+                      {{ currency.currency }}
+                      {{ allCosts | costType: 'Screened':'sum' | exchange: currency | fixedNumber: 2 | amount }}
                     </span>
                   </ng-container>
                 </div>
@@ -90,8 +112,3 @@
     </div>
   </div>
 </div>
-
-<button [expansionPanel]="expand">expand</button>
-<expansion-panel #expand>
-  <ng-container *lazyContent>WITAM</ng-container>
-</expansion-panel>

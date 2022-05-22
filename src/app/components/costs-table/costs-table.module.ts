@@ -6,7 +6,7 @@ import { ExchangeRatesModule } from '@shared/exchange-rates';
 import { AmountModule } from '@shared/amount';
 import { FixedIntegerModule } from '@shared/fixed-integer';
 import { ExpansionPanelModule } from '@shared/expansion-panel';
-import { LazyContentModule } from '@shared/lazy-content';
+import { NotesModule } from '@shared/notes';
 
 @NgModule({
   declarations: [CostsTableComponent],
@@ -17,6 +17,7 @@ import { LazyContentModule } from '@shared/lazy-content';
     AmountModule,
     FixedIntegerModule,
     ExpansionPanelModule,
+    NotesModule
   ],
   exports: [CostsTableComponent]
 })

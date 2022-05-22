@@ -1,4 +1,4 @@
-import {Directive, HostBinding, HostListener, Input} from '@angular/core';
+import { Directive, HostListener, Input } from '@angular/core';
 import { ExpansionPanelComponent } from '../components';
 
 @Directive({
@@ -6,11 +6,6 @@ import { ExpansionPanelComponent } from '../components';
 })
 export class ExpansionPanelDirective {
   @Input() expansionPanel: ExpansionPanelComponent;
-
-  @HostBinding('class.expanded')
-  get isClosed() {
-    return this.expansionPanel.isClosed;
-  }
 
   @HostListener('click')
   clickHandler() {

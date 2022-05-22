@@ -1,0 +1,36 @@
+<div class="mx-6">
+  <ng-container *ngIf="notesExists">
+    <div class="flex justify-between py-4" *ngFor="let note of notes">
+      <div class="flex items-center">
+        <div
+          [class.note__type-internal]="note.type === 'Internal'"
+          [class.note__type-external]="note.type === 'External'"
+          class="rounded-full text-sm px-2 py-1 mr-24">
+          {{ note.type }}
+        </div>
+        <span>{{ note.comment }}</span>
+      </div>
+      <div class="flex">
+        <span class="pr-4">{{ note.author }}</span>
+        <span class="pr-8">{{ note.date | date: dateFormat }}</span>
+        <span class="flex content-end">
+          <span class="pr-1">icon1</span>
+          <span>icon2</span>
+        </span>
+      </div>
+    </div>
+  </ng-container>
+
+  <form [formGroup]="form">
+    <div class="flex justify-between">
+      <select
+        formControlName="commentType"
+        class="mr-2 flex-1 mt-1 block w-52 py-2 px-3 border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <option value="Internal">Internal</option>
+        <option value="External">External</option>
+      </select>
+      <textarea rows="1" class="resize-none mr-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300" placeholder="Type comment"></textarea>
+      <button type="button" class="px-4 bg-c-table-header">Add</button>
+    </div>
+  </form>
+</div>

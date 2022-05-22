@@ -16,6 +16,6 @@ export const expansionAnimation = trigger('expansionAnimation', [
       visibility: 'visible'
     })
   ),
-  transition('CLOSED => EXPANDED', animate('150ms ease-in')),
-  transition('EXPANDED => CLOSED', animate('150ms ease-out'))
+  transition('CLOSED => EXPANDED', animate('300ms ease-in')),
+  transition('EXPANDED => CLOSED', animate('300ms ease-out'))
 ]);

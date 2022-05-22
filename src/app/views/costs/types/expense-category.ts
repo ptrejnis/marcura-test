@@ -6,7 +6,6 @@ export interface ExpenseCategory {
   name: string;
   displayOrder: number;
   costItems: CostItem[];
-  comments: Note[];
 }
 
 export interface CostItem {
@@ -15,6 +14,7 @@ export interface CostItem {
   costItemAlias: CostItemAlias;
   annotation: CostAnnotation;
   costs: Cost[];
+  comments: Note[];
 }
 
 interface CostItemAlias {
