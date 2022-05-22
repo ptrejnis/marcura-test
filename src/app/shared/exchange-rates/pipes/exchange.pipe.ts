@@ -1,16 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { CurrencyExchangeRates, ExchangeRates } from '../types';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, pluck } from 'rxjs';
+import { ExchangeRatesPair } from '../types';
 
 @Pipe({ name: 'exchange' })
 export class ExchangePipe implements PipeTransform {
-  exchangeRates$: Observable<ExchangeRates> = this._route.data.pipe(pluck('exchangeRates'));
+  transform(value: number, exchangeRates: ExchangeRatesPair): number {
+    const { fromCurrency, toCurrency } = exchangeRates;
 
-  constructor(private readonly _route: ActivatedRoute) {}
-
-  transform(value: number, exchangeRates: CurrencyExchangeRates): number {
-    return value * exchangeRates.from * exchangeRates.to;
+    return value * fromCurrency.exchangeRate * toCurrency.exchangeRate;
   }
 }

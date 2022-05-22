@@ -9,14 +9,18 @@ export interface PaymentCurrency {
   exchangeRate: number;
 }
 
-export interface CurrencyExchange {
-  baseCurrency: string;
-  daCurrency: string;
-  selectedCurrency: string;
+export interface CurrencyExchangeRates {
+  exchangeRateFrom: number;
+  exchangeRateTo: number;
+  currency: string;
 }
 
-export interface CurrencyExchangeRates {
-  from: number;
-  to: number;
+export interface ExchangeRatesPair {
+  fromCurrency: RelativeExchangeRate;
+  toCurrency: RelativeExchangeRate;
+}
+
+interface RelativeExchangeRate {
+  exchangeRate: number;
   currency: string;
 }

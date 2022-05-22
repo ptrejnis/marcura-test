@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CostsComponent } from './components';
-import { CostsResolver } from '@views/costs/resolvers';
+
 import { ExchangeRatesResolver } from '@shared/exchange-rates';
+import { CostsComponent } from './components';
+import { CostsResolver } from './resolvers';
 
 const routes: Routes = [
   {

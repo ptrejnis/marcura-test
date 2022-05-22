@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Inject, Input, OnInit } from '@angular/core';
-import { Note } from '@shared/notes/types';
-import { NOTES_CONFIG, NotesConfig } from '@shared/notes/notes.provider';
-import { NotesFormFacade } from './notes-form.facade';
 import { FormGroup } from '@angular/forms';
+
+import { Note } from './types';
+import { NOTES_CONFIG, NotesConfig } from './notes.provider';
+import { NotesFormFacade } from './notes-form.facade';
 
 @Component({
   selector: 'notes',

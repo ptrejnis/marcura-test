@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { AmountPipe } from '@shared/amount/amount.pipe';
+
+import { AmountPipe } from './amount.pipe';
 
 @NgModule({
   declarations: [AmountPipe],

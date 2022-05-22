@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { LazyContentDirective } from './lazy-content.directive';
 
 @NgModule({

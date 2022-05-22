@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { Cost } from '@shared/types';
-import { CostType } from './types';
 import { isEmptyArray } from '@utils/types';
+import { CostType } from './types';
 
 @Pipe({ name: 'costType' })
 export class CostTypePipe implements PipeTransform {

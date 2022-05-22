@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
 import { ExpenseCategory } from '@views/costs/types';
 import { ExchangeRatesFacade } from '@shared/exchange-rates/facades';
 

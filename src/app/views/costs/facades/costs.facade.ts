@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, filter, Observable, pluck, take, tap } from 'rxjs';
 
-import { CurrencyExchangeRates, ExchangeRates } from '@shared/exchange-rates';
-import { CostsResponse } from '../types';
-import { ExchangeRatesFacade } from '@shared/exchange-rates/facades';
 import { notEmptyArray } from '@utils/types';
+import { ExchangeRates, getCurrencyExchangeRate, getExchangeRate, ExchangeRatesFacade } from '@shared/exchange-rates';
+import { CostsResponse } from '../types';
 
 @Injectable()
 export class CostsFacade {
@@ -26,37 +25,19 @@ export class CostsFacade {
 
   private _updateCurrencies([exchangeRates, costs]: [ExchangeRates, CostsResponse]): void {
     this._exchangeRatesFacade.exchangeRates$.next(exchangeRates);
+    const { baseCurrency, daCurrency } = costs;
+    const { sourceCurrency } = exchangeRates;
     this._exchangeRatesFacade.baseCurrencyExchangeRates$.next(
-      updateCurrencyExchangeRates(costs.baseCurrency.currency, exchangeRates)
+      getCurrencyExchangeRate(
+        { fromCurrency: sourceCurrency, toCurrency: baseCurrency.currency },
+        getExchangeRate(costs.baseCurrency.currency, exchangeRates)
+      )
     );
     this._exchangeRatesFacade.daCurrencyExchangeRates$.next(
-      updateCurrencyExchangeRates(costs.baseCurrency.currency, exchangeRates)
+      getCurrencyExchangeRate(
+        { fromCurrency: sourceCurrency, toCurrency: daCurrency.currency },
+        getExchangeRate(costs.baseCurrency.currency, exchangeRates)
+      )
     );
   }
-}
-
-function updateCurrencyExchangeRates(currencyName: string, exchangeRates: ExchangeRates): CurrencyExchangeRates {
-  return currencyName === exchangeRates.sourceCurrency
-    ? getSourceExchangeRates(currencyName)
-    : getRefExchangeRates(currencyName, exchangeRates);
-}
-
-function getExchangeRate(currencyName: string, exchangeRates: ExchangeRates): number {
-  return exchangeRates.paymentCurrencies.find(({ toCurrency }) => toCurrency === currencyName)?.exchangeRate ?? 1;
-}
-
-function getSourceExchangeRates(currency: string): CurrencyExchangeRates {
-  return {
-    from: 1,
-    to: 1,
-    currency
-  };
-}
-
-function getRefExchangeRates(currency: string, exchangeRates: ExchangeRates): CurrencyExchangeRates {
-  return {
-    from: 1 / getExchangeRate(currency, exchangeRates),
-    to: getExchangeRate(currency, exchangeRates),
-    currency
-  };
 }

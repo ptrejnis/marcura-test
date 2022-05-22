@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ExpansionPanelComponent } from './components';
 import { CommonModule } from '@angular/common';
+
 import { LazyContentModule } from '@shared/lazy-content';
+import { ExpansionPanelComponent } from './components';
 import { ExpansionPanelDirective } from './directives';
 
 @NgModule({

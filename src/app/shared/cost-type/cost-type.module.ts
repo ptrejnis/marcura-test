@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CostTypePipe } from '@shared/cost-type/cost-type.pipe';
+
+import { CostTypePipe } from './cost-type.pipe';
 
 @NgModule({
   declarations: [CostTypePipe],

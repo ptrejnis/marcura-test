@@ -23,13 +23,13 @@
                   <div class="flex flex-col">
                     <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
                       <span>
-                        {{ currency.currency }}
+                        {{ currency.toCurrency.currency }}
                         {{ item.costs | costType: 'Quoted' | exchange: currency | fixedNumber: 2 | amount }}
                       </span>
                     </ng-container>
                     <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
                       <span>
-                        {{ currency.currency }}
+                        {{ currency.toCurrency.currency }}
                         {{ item.costs | costType: 'Quoted' | exchange: currency | fixedNumber: 2 | amount }}
                       </span>
                     </ng-container>
@@ -39,14 +39,14 @@
                   <div class="flex flex-col">
                     <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
                       <span>
-                        {{ currency.currency }}
+                        {{ currency.toCurrency.currency }}
                         {{ item.costs | costType: 'Screened' | exchange: currency | fixedNumber: 2 | amount }}
                       </span>
                     </ng-container>
 
                     <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
                       <span>
-                        {{ currency.currency }}
+                        {{ currency.toCurrency.currency }}
                         {{ item.costs | costType: 'Screened' | exchange: currency | fixedNumber: 2 | amount }}
                       </span>
                     </ng-container>
@@ -76,13 +76,13 @@
                 <div class="flex flex-col">
                   <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
                     <span>
-                      {{ currency.currency }}
+                      {{ currency.toCurrency.currency }}
                       {{ allCosts | costType: 'Quoted':'sum' | exchange: currency | fixedNumber: 2 | amount }}
                     </span>
                   </ng-container>
                   <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
                     <span>
-                      {{ currency.currency }}
+                      {{ currency.toCurrency.currency }}
                       {{ allCosts | costType: 'Quoted':'sum' | exchange: currency | fixedNumber: 2 | amount }}
                     </span>
                   </ng-container>
@@ -92,14 +92,14 @@
                 <div class="flex flex-col">
                   <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
                     <span>
-                      {{ currency.currency }}
+                      {{ currency.toCurrency.currency }}
                       {{ allCosts | costType: 'Screened':'sum' | exchange: currency | fixedNumber: 2 | amount }}
                     </span>
                   </ng-container>
 
                   <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
                     <span>
-                      {{ currency.currency }}
+                      {{ currency.toCurrency.currency }}
                       {{ allCosts | costType: 'Screened':'sum' | exchange: currency | fixedNumber: 2 | amount }}
                     </span>
                   </ng-container>

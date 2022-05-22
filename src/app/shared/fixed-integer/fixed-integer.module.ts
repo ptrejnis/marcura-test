@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { FixedIntegerPipe } from './fixed-integer.pipe';
 
 @NgModule({

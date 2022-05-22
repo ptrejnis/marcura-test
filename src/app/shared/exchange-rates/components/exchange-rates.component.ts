@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { CurrencyExchangeRates, PaymentCurrency } from '../types';
+import { PaymentCurrency } from '../types';
 import { ExchangeRatesFormFacade, ExchangeRatesFacade } from '../facades';
+import { getCurrencyExchangeRate } from '../utils';
 
 @Component({
   selector: 'exchange-rates',
@@ -29,30 +30,13 @@ export class ExchangeRatesComponent implements OnInit {
 
   ngOnInit() {
     this._formFacade.onCurrencyChange((currency) =>
-      this._exchangeRatesFacade.selectedCurrency$.next(updateCurrencyExchangeRates(currency))
+      this._exchangeRatesFacade.selectedCurrency$.next(
+        getCurrencyExchangeRate(
+          { fromCurrency: currency.fromCurrency, toCurrency: currency.toCurrency },
+          currency.exchangeRate
+        )
+      )
     );
     this._formFacade.updateDefaultValue(this.exchangeRates$);
   }
-}
-
-function updateCurrencyExchangeRates(currencyDetails: PaymentCurrency): CurrencyExchangeRates {
-  const { fromCurrency, toCurrency } = currencyDetails;
-  return fromCurrency === toCurrency ? getSourceExchangeRates(toCurrency) : getRefExchangeRates(currencyDetails);
-}
-
-function getSourceExchangeRates(currency: string): CurrencyExchangeRates {
-  return {
-    from: 1,
-    to: 1,
-    currency
-  };
-}
-
-function getRefExchangeRates(currencyDetails: PaymentCurrency): CurrencyExchangeRates {
-  const { exchangeRate, toCurrency } = currencyDetails;
-  return {
-    from: 1 / exchangeRate,
-    to: exchangeRate,
-    currency: toCurrency
-  };
 }

@@ -10,9 +10,9 @@
     </ng-container>
   </select>
   <p class="pl-3" *ngIf="baseToSelectedExchangeRates$ | async as exchangeRates">
-    {{ baseCurrencyAmount }} {{ (baseCurrencyExchangeRates$ | async)?.currency }} =
+    {{ baseCurrencyAmount }} {{ exchangeRates.fromCurrency.currency }} =
     <span class="font-semibold">
-      {{ baseCurrencyAmount | exchange: exchangeRates | fixedNumber: 4 }} {{ exchangeRates.currency }}
+      {{ baseCurrencyAmount | exchange: exchangeRates | fixedNumber: 4 }} {{ exchangeRates.toCurrency.currency }}
     </span>
   </p>
 </form>

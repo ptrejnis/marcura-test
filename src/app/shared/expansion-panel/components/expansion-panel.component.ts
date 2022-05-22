@@ -7,9 +7,10 @@ import {
   TemplateRef,
   ViewChild
 } from '@angular/core';
-import { expansionAnimation } from '../animations';
 import { BehaviorSubject } from 'rxjs';
+
 import { LazyContentDirective } from '@shared/lazy-content';
+import { expansionAnimation } from '../animations';
 
 type ExpansionPanelState = 'EXPANDED' | 'CLOSED';
 
