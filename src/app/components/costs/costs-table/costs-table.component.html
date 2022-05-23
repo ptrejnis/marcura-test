@@ -13,7 +13,7 @@
             </tr>
           </thead>
           <tbody class="border-x border-c-secondary">
-            <ng-container *ngFor="let item of expenseCategory.costItems; trackBy:trackById">
+            <ng-container *ngFor="let item of expenseCategory.costItems; trackBy: trackById">
               <tr class="bg-white border-t border-c-secondary text-sm text-c-primary-dark break-words">
                 <td class="px-4 py-4">{{ item.name }}</td>
                 <td class="px-4 py-4">
@@ -31,6 +31,7 @@
                   </button>
                 </td>
               </tr>
+
               <tr>
                 <td colspan="5">
                   <expansion-panel #expand>
@@ -43,8 +44,7 @@
             </ng-container>
 
             <tr class="bg-white border-y border-b-c-secondary c-primary-dark border-t-c-primary border-t-2 text-sm">
-              <td class="px-4 py-4 font-bold">Total</td>
-              <td colspan="1"></td>
+              <td class="px-4 py-4 font-bold" colspan="2">Total</td>
               <td class="px-4 py-4 text-right">
                 <costs-calculations [costs]="allCosts" [isSum]="true" costType="Quoted"></costs-calculations>
               </td>
