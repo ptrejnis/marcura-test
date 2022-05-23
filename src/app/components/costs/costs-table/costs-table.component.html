@@ -5,28 +5,28 @@
         <table class="min-w-full leading-normal table-fixed">
           <thead class="border border-c-primary bg-c-primary text-sm text-c-white text-left font-medium">
             <tr>
-              <th scope="col" class="px-2 py-4">{{ expenseCategory.name }}</th>
-              <th scope="col" class="px-2 py-4">Account code</th>
-              <th scope="col" class="px-2 py-4">Quoted</th>
-              <th scope="col" class="px-2 py-4">Screened</th>
-              <th scope="col" class="px-2 py-4"></th>
+              <th scope="col" class="px-4 py-4">{{ expenseCategory.name }}</th>
+              <th scope="col" class="px-4 py-4">Account code</th>
+              <th scope="col" class="px-4 py-4 text-right">Quoted</th>
+              <th scope="col" class="px-4 py-4 text-right">Screened</th>
+              <th scope="col" class="px-4 py-4"></th>
             </tr>
           </thead>
           <tbody class="border-x border-c-secondary">
             <ng-container *ngFor="let item of expenseCategory.costItems; trackBy:trackById">
               <tr class="bg-white border-t border-c-secondary text-sm text-c-primary-dark break-words">
-                <td class="px-2 py-4 max-w-fit">{{ item.name }}</td>
-                <td class="px-2 py-4">
+                <td class="px-4 py-4">{{ item.name }}</td>
+                <td class="px-4 py-4">
                   {{ item.costItemAlias.accountingCode }}
                 </td>
-                <td class="px-2 py-4">
+                <td class="px-4 py-4 text-right">
                   <costs-calculations [costs]="item.costs" costType="Quoted"></costs-calculations>
                 </td>
-                <td class="px-2 py-4">
+                <td class="px-4 py-4 text-right">
                   <costs-calculations [costs]="item.costs" costType="Screened"></costs-calculations>
                 </td>
-                <td class="px-2 py-4">
-                  <button class="justify-self-end" [expansionPanel]="expand">
+                <td class="px-4 py-4 text-center">
+                  <button type="button" [expansionPanel]="expand">
                     <notes-counter [count]="item.comments?.length ?? 0"></notes-counter>
                   </button>
                 </td>
@@ -43,12 +43,12 @@
             </ng-container>
 
             <tr class="bg-white border-y border-b-c-secondary c-primary-dark border-t-c-primary border-t-2 text-sm">
-              <td class="px-2 py-4 font-bold">Total</td>
+              <td class="px-4 py-4 font-bold">Total</td>
               <td colspan="1"></td>
-              <td class="px-2 py-4">
+              <td class="px-4 py-4 text-right">
                 <costs-calculations [costs]="allCosts" [isSum]="true" costType="Quoted"></costs-calculations>
               </td>
-              <td class="px-2 py-4">
+              <td class="px-4 py-4 text-right">
                 <costs-calculations [costs]="allCosts" [isSum]="true" costType="Screened"></costs-calculations>
               </td>
             </tr>
