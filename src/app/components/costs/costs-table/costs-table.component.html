@@ -20,37 +20,10 @@
                   {{ item.costItemAlias.accountingCode }}
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">
-                  <div class="flex flex-col">
-                    <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
-                      <span>
-                        {{ currency.toCurrency.currency }}
-                        {{ item.costs | costType: 'Quoted' | exchange: currency | fixedNumber: 2 | amount }}
-                      </span>
-                    </ng-container>
-                    <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
-                      <span>
-                        {{ currency.toCurrency.currency }}
-                        {{ item.costs | costType: 'Quoted' | exchange: currency | fixedNumber: 2 | amount }}
-                      </span>
-                    </ng-container>
-                  </div>
+                  <costs-calculations [costs]="item.costs" costType="Quoted"></costs-calculations>
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">
-                  <div class="flex flex-col">
-                    <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
-                      <span>
-                        {{ currency.toCurrency.currency }}
-                        {{ item.costs | costType: 'Screened' | exchange: currency | fixedNumber: 2 | amount }}
-                      </span>
-                    </ng-container>
-
-                    <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
-                      <span>
-                        {{ currency.toCurrency.currency }}
-                        {{ item.costs | costType: 'Screened' | exchange: currency | fixedNumber: 2 | amount }}
-                      </span>
-                    </ng-container>
-                  </div>
+                  <costs-calculations [costs]="item.costs" costType="Screened"></costs-calculations>
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs flex w-100">
                   <button class="justify-self-end" [expansionPanel]="expand">
@@ -73,37 +46,10 @@
               <td class="font-semibold text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">Total</td>
               <td colspan="1"></td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">
-                <div class="flex flex-col">
-                  <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
-                    <span>
-                      {{ currency.toCurrency.currency }}
-                      {{ allCosts | costType: 'Quoted':'sum' | exchange: currency | fixedNumber: 2 | amount }}
-                    </span>
-                  </ng-container>
-                  <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
-                    <span>
-                      {{ currency.toCurrency.currency }}
-                      {{ allCosts | costType: 'Quoted':'sum' | exchange: currency | fixedNumber: 2 | amount }}
-                    </span>
-                  </ng-container>
-                </div>
+                <costs-calculations [costs]="allCosts" [isSum]="true" costType="Quoted"></costs-calculations>
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">
-                <div class="flex flex-col">
-                  <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
-                    <span>
-                      {{ currency.toCurrency.currency }}
-                      {{ allCosts | costType: 'Screened':'sum' | exchange: currency | fixedNumber: 2 | amount }}
-                    </span>
-                  </ng-container>
-
-                  <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
-                    <span>
-                      {{ currency.toCurrency.currency }}
-                      {{ allCosts | costType: 'Screened':'sum' | exchange: currency | fixedNumber: 2 | amount }}
-                    </span>
-                  </ng-container>
-                </div>
+                <costs-calculations [costs]="allCosts" [isSum]="true" costType="Screened"></costs-calculations>
               </td>
             </tr>
           </tbody>

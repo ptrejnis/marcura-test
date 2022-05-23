@@ -2,13 +2,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 import { Cost } from '@shared/types';
 import { isEmptyArray } from '@utils/types';
-import { CostType } from './types';
+import { CostOption, CostType } from './types';
 
 @Pipe({ name: 'costType' })
 export class CostTypePipe implements PipeTransform {
-  transform(costs: Cost[], costType: CostType, opt: 'single' | 'sum' = 'single'): Cost['amount'] {
+  transform(costs: Cost[], costType: CostType, opt: CostOption): Cost['amount'] {
     switch (opt) {
-      case 'single':
+      case 'singleValue':
         return costs.find(({ type }) => type === costType)?.amount ?? 0;
         break;
       case 'sum':

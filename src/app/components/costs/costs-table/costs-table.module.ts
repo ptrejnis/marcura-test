@@ -7,6 +7,7 @@ import { AmountModule } from '@shared/amount';
 import { FixedIntegerModule } from '@shared/fixed-integer';
 import { ExpansionPanelModule } from '@shared/expansion-panel';
 import { NotesModule } from '@shared/notes';
+import { CostsCalculationsModule } from '../costs-calculations';
 import { CostsTableComponent } from './costs-table.component';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CostsTableComponent } from './costs-table.component';
     AmountModule,
     FixedIntegerModule,
     ExpansionPanelModule,
-    NotesModule
+    NotesModule,
+    CostsCalculationsModule
   ],
   exports: [CostsTableComponent]
 })

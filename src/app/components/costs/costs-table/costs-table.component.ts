@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { ExpenseCategory } from '@views/costs/types';
-import { ExchangeRatesFacade } from '@shared/exchange-rates/facades';
+import { Cost } from '@shared/types';
 
 @Component({
   selector: 'costs-table',
@@ -11,12 +11,7 @@ import { ExchangeRatesFacade } from '@shared/exchange-rates/facades';
 export class CostsTableComponent {
   @Input() expenseCategory: ExpenseCategory;
 
-  daToSelectedExchangeCurrency$ = this._exchangeRatesFacade.daToSelectedExchangeCurrency$;
-  daToBaseExchangeCurrency$ = this._exchangeRatesFacade.daToBaseExchangeCurrency$;
-
-  get allCosts() {
+  get allCosts(): Cost[] {
     return this.expenseCategory.costItems.flatMap((i) => i?.costs);
   }
-
-  constructor(private readonly _exchangeRatesFacade: ExchangeRatesFacade) {}
 }
