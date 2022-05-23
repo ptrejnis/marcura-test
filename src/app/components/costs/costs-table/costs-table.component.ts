@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, TrackByFunction } from '@angular/core';
 
-import { ExpenseCategory } from '@views/costs/types';
+import { CostItem, ExpenseCategory } from '@views/costs/types';
 import { Cost } from '@shared/types';
 
 @Component({
@@ -10,6 +10,8 @@ import { Cost } from '@shared/types';
 })
 export class CostsTableComponent {
   @Input() expenseCategory: ExpenseCategory;
+
+  readonly trackById: TrackByFunction<CostItem> = (idx, { id }) => id;
 
   get allCosts(): Cost[] {
     return this.expenseCategory.costItems.flatMap((i) => i?.costs);

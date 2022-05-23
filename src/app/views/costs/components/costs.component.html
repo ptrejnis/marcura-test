@@ -3,7 +3,7 @@
     <h1 class="font-semibold text-c-header-primary text-md uppercase">Costs</h1>
     <exchange-rates></exchange-rates>
   </div>
-  <ng-container *ngFor="let expenseCategory of costs.costs">
+  <ng-container *ngFor="let expenseCategory of costs.costs; trackBy: trackById">
     <costs-table [expenseCategory]="expenseCategory"></costs-table>
   </ng-container>
 </div>

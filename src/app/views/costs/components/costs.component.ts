@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, TrackByFunction } from '@angular/core';
 
 import { CostsFacade } from '../facades';
+import { ExpenseCategory } from '../types';
 
 @Component({
   selector: 'costs',
@@ -9,7 +10,8 @@ import { CostsFacade } from '../facades';
   providers: [CostsFacade]
 })
 export class CostsComponent implements OnInit {
-  costs$ = this._costsFacade.costs$;
+  readonly costs$ = this._costsFacade.costs$;
+  readonly trackById: TrackByFunction<ExpenseCategory> = (idx, { id }) => id;
 
   constructor(private readonly _costsFacade: CostsFacade) {}
 

@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, TrackByFunction } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { PaymentCurrency } from '../types';
 import { ExchangeRatesFormFacade, ExchangeRatesFacade } from '../facades';
 import { getCurrencyExchangeRate } from '../utils';
+import { CostItem } from '@views/costs/types';
 
 @Component({
   selector: 'exchange-rates',
@@ -17,6 +18,7 @@ export class ExchangeRatesComponent implements OnInit {
   readonly exchangeRates$ = this._exchangeRatesFacade.exchangeRates$;
   readonly baseCurrencyExchangeRates$ = this._exchangeRatesFacade.baseCurrencyExchangeRates$;
   readonly baseToSelectedExchangeRates$ = this._exchangeRatesFacade.baseToSelectedExchangeRates$;
+  readonly trackByCurrency: TrackByFunction<PaymentCurrency> = (idx, { toCurrency }) => toCurrency;
 
   get selectedCurrency(): PaymentCurrency {
     return this._formFacade.currencyControl.value;
