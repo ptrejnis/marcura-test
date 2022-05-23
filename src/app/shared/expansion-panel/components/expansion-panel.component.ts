@@ -43,10 +43,6 @@ export class ExpansionPanelComponent {
     return this.state$.getValue() === 'EXPANDED';
   }
 
-  get isClosed(): boolean {
-    return this.state$.getValue() === 'CLOSED';
-  }
-
   constructor(private readonly _cdRef: ChangeDetectorRef) {}
 
   toggle(): void {
