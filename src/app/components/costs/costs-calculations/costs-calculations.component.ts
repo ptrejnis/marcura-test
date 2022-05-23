@@ -13,7 +13,7 @@ import { COSTS_CALCULATIONS_CONFIG, CostsCalculationsConfig } from './costs-calc
 export class CostsCalculationsComponent {
   @Input() costs: Cost[] = [];
   @Input() costType: CostType = 'Quoted';
-  @Input() isSum: boolean = false;
+  @Input() isSum = false;
 
   amountFixedSize = this._config.amountFixedSize;
 
