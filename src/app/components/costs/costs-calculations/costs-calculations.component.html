@@ -1,12 +1,12 @@
 <div class="flex flex-col">
   <ng-container *ngIf="daToSelectedExchangeCurrency$ | async as currency">
     <span>
-      {{ currency.toCurrency.currency }}
+      <span class="text-xs text-c-secondary-dark">{{ currency.toCurrency.currency }}</span>
       {{ costs | costType: costType:costOption | exchange: currency | fixedNumber: amountFixedSize | amount }}
     </span>
   </ng-container>
   <ng-container *ngIf="daToBaseExchangeCurrency$ | async as currency">
-    <span>
+    <span class="text-xs text-c-secondary-dark">
       {{ currency.toCurrency.currency }}
       {{ costs | costType: costType:costOption | exchange: currency | fixedNumber: amountFixedSize | amount }}
     </span>

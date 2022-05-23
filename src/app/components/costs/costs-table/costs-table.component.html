@@ -3,29 +3,29 @@
     <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
       <div class="overflow-hidden">
         <table class="min-w-full leading-normal table-fixed">
-          <thead class="border-b bg-c-table-header text-sm text-c-white text-left font-medium">
+          <thead class="border border-c-primary bg-c-primary text-sm text-c-white text-left font-medium">
             <tr>
-              <th scope="col" class="px-6 py-4">{{ expenseCategory.name }}</th>
-              <th scope="col" class="px-6 py-4">Account code</th>
-              <th scope="col" class="px-6 py-4">Quoted</th>
-              <th scope="col" class="px-6 py-4">Screened</th>
-              <th scope="col" class="px-6 py-4"></th>
+              <th scope="col" class="px-2 py-4">{{ expenseCategory.name }}</th>
+              <th scope="col" class="px-2 py-4">Account code</th>
+              <th scope="col" class="px-2 py-4">Quoted</th>
+              <th scope="col" class="px-2 py-4">Screened</th>
+              <th scope="col" class="px-2 py-4"></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="border-x border-c-secondary">
             <ng-container *ngFor="let item of expenseCategory.costItems; trackBy:trackById">
-              <tr class="bg-white border-b">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 max-w-xs">{{ item.name }}</td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">
+              <tr class="bg-white border-t border-c-secondary text-sm text-c-primary-dark break-words">
+                <td class="px-2 py-4 max-w-fit">{{ item.name }}</td>
+                <td class="px-2 py-4">
                   {{ item.costItemAlias.accountingCode }}
                 </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">
+                <td class="px-2 py-4">
                   <costs-calculations [costs]="item.costs" costType="Quoted"></costs-calculations>
                 </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">
+                <td class="px-2 py-4">
                   <costs-calculations [costs]="item.costs" costType="Screened"></costs-calculations>
                 </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">
+                <td class="px-2 py-4">
                   <button class="justify-self-end" [expansionPanel]="expand">
                     <notes-counter [count]="item.comments?.length ?? 0"></notes-counter>
                   </button>
@@ -42,13 +42,13 @@
               </tr>
             </ng-container>
 
-            <tr class="bg-white border-b">
-              <td class="font-semibold text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">Total</td>
+            <tr class="bg-white border-y border-b-c-secondary c-primary-dark border-t-c-primary border-t-2 text-sm">
+              <td class="px-2 py-4 font-bold">Total</td>
               <td colspan="1"></td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">
+              <td class="px-2 py-4">
                 <costs-calculations [costs]="allCosts" [isSum]="true" costType="Quoted"></costs-calculations>
               </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-w-xs">
+              <td class="px-2 py-4">
                 <costs-calculations [costs]="allCosts" [isSum]="true" costType="Screened"></costs-calculations>
               </td>
             </tr>

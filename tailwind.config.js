@@ -1,14 +1,15 @@
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}",
-  ],
+  content: ['./src/**/*.{html,ts}'],
   theme: {
     colors: {
+      'c-primary': '#3387AB',
+      'c-primary-dark': '#384953',
+      'c-primary-light': '#E9EFF1',
+      'c-secondary': '#BCC6CD',
+      'c-secondary-dark': '#96A4AB',
       'c-white': '#ffffff',
-      'c-table-header': '#3386A9',
-      'c-table-body-primary': '#e8f1f8',
-      'c-header-primary': '#0E546C'
+      'c-red': '#ff4040'
     }
   },
-  plugins: [],
-}
+  plugins: []
+};
