@@ -6,8 +6,8 @@ const REGEXP = new RegExp(/\B(?=(\d{3})+(?!\d))/g);
 
 @Pipe({ name: 'amount' })
 export class AmountPipe implements PipeTransform {
-  transform(value: string): string {
-    const fixedAmount: string[] = value.split(DECIMAL_SEPARATOR);
+  transform(value: number): string {
+    const fixedAmount: string[] = value.toFixed(2).split(DECIMAL_SEPARATOR);
     const [integer, decimal] = fixedAmount;
     const formattedInteger: string = integer.replace(REGEXP, INTEGER_SEPARATOR);
 

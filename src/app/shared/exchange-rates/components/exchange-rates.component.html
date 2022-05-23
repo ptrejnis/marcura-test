@@ -12,7 +12,7 @@
   <p class="pl-3" *ngIf="baseToSelectedExchangeRates$ | async as exchangeRates">
     {{ baseCurrencyAmount }} {{ exchangeRates.fromCurrency.currency }} =
     <span class="font-semibold">
-      {{ baseCurrencyAmount | exchange: exchangeRates | fixedNumber: 4 }} {{ exchangeRates.toCurrency.currency }}
+      {{ baseCurrencyAmount | exchange: exchangeRates }} {{ exchangeRates.toCurrency.currency }}
     </span>
   </p>
 </form>

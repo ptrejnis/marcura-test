@@ -1,4 +1,5 @@
 import { CurrencyExchangeRates, PaymentCurrency } from '../types';
+import { decimalCalculation } from '@utils/helpers';
 
 export function getCurrencyExchangeRate(
   currencies: Omit<PaymentCurrency, 'exchangeRate'>,
@@ -8,8 +9,8 @@ export function getCurrencyExchangeRate(
   return fromCurrency === toCurrency
     ? getSourceCurrencyExchangeRates(fromCurrency)
     : {
-        exchangeRateFrom: 1 / exchangeRate,
-        exchangeRateTo: exchangeRate,
+        exchangeRateFrom: decimalCalculation(1 / exchangeRate),
+        exchangeRateTo: decimalCalculation(exchangeRate),
         currency: toCurrency
       };
 }
