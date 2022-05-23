@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 import { Cost } from '@shared/types';
 import { isEmptyArray } from '@utils/types';
+import { decimalCalculation } from '@utils/helpers';
 import { CostOption, CostType } from './types';
 
 @Pipe({ name: 'costType' })
@@ -27,5 +28,5 @@ function sumCosts(costs: Cost[], costType: CostType): number {
   if (isEmptyArray(costsByType)) {
     return 0;
   }
-  return costsByType.map(({ amount }) => amount).reduce((curr, next) => curr + next, 0);
+  return costsByType.map(({ amount }) => amount).reduce((curr, next) => decimalCalculation(curr + next), 0);
 }
