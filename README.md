@@ -41,3 +41,4 @@ Open browser and run `http://localhost:4200/`
 * I left bug with animation which closes accordion
 * `AmountPipe` should not have regex expression formatter, because regex is not readable, so it's hard to maintain it
 * `NumberPipe` from Angular is useless
+* Desktop only, `Chrome` browser support
